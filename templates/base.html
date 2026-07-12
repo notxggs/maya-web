@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Maya{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/theme.css">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="petal-field" aria-hidden="true"></div>
+
+  <div class="page-shell">
+    <header class="topnav">
+      <div class="topnav-left">
+        {% block nav_left %}
+          <a class="topnav-brand" href="/dashboard">Maya</a>
+        {% endblock %}
+      </div>
+
+      {% block nav_center %}{% endblock %}
+
+      <div class="topnav-right">
+        {% block nav_links %}
+          <nav class="topnav-links">
+            <a href="/dashboard" class="active">Home</a>
+            <a href="#">Premium</a>
+            <a href="#">Docs</a>
+          </nav>
+          <span class="topnav-status"><span class="badge live">Online</span></span>
+        {% endblock %}
+
+        <div class="topnav-user" id="nav-user-trigger">
+          <img src="{{ avatar }}" alt="">
+          <div class="who">
+            <div class="name">{{ session.username }}</div>
+            <div class="plan">Free Plan</div>
+          </div>
+          <div class="topnav-menu" id="nav-user-menu">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/auth/logout">Log out</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <div id="toast-root" aria-live="polite"></div>
+
+  <script src="/static/js/common.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

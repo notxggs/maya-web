@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — Maya</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/static/maya-avatar.png">
+  <style>
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 32px;
+      background: rgba(20, 11, 33, 0.55);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-nav .brand {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 19px;
+    }
+    .site-nav .brand img { width: 26px; height: 26px; border-radius: 50%; }
+    .site-nav nav { display: flex; align-items: center; gap: 26px; font-size: 13.5px; font-weight: 600; color: var(--text-mid); }
+    .site-nav nav a { transition: color 0.15s ease; }
+    .site-nav nav a:hover, .site-nav nav a.active { color: var(--text-hi); }
+    .site-nav .vote-link { display: flex; align-items: center; gap: 6px; color: var(--pink-hi); }
+    @media (max-width: 760px) { .site-nav nav { display: none; } }
+
+    .legal-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 32px 100px;
+    }
+    .legal-header { margin-bottom: 40px; }
+    .legal-header .eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .legal-header h1 { font-size: 40px; margin-bottom: 10px; }
+    .legal-header p.updated { color: var(--text-low); font-size: 13.5px; }
+
+    .legal-body h2 {
+      font-size: 20px; margin-top: 38px; margin-bottom: 12px;
+      color: var(--text-hi);
+    }
+    .legal-body h2:first-child { margin-top: 0; }
+    .legal-body p {
+      font-size: 14.5px; line-height: 1.7; color: var(--text-mid);
+      margin-bottom: 14px;
+    }
+    .legal-body ul {
+      margin: 0 0 14px 20px; padding: 0;
+    }
+    .legal-body ul li {
+      font-size: 14.5px; line-height: 1.7; color: var(--text-mid);
+      margin-bottom: 6px;
+    }
+    .legal-body a { color: var(--pink-hi); }
+    .legal-body strong { color: var(--text-hi); }
+
+    .legal-footer-nav {
+      margin-top: 48px; padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex; gap: 20px; font-size: 13.5px;
+    }
+    .legal-footer-nav a { color: var(--text-mid); }
+    .legal-footer-nav a:hover { color: var(--pink-hi); }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="brand" href="/">
+      <img src="/static/maya-avatar.png" alt="">
+      Maya
+    </a>
+    <nav>
+      <a href="/#commands">Commands</a>
+      <a href="/docs">Docs</a>
+      <a class="vote-link" href="{{ vote_url|default('#') }}" target="_blank" rel="noopener">✦ Vote</a>
+      {% if session %}
+        <a href="/dashboard">Dashboard</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <div class="legal-shell">
+    <div class="legal-header">
+      <div class="eyebrow">
+        <img src="/static/maya-avatar.png" alt="" style="width:20px;height:20px;border-radius:50%;">
+        MAYA
+      </div>
+      <h1>Terms of Service</h1>
+      <p class="updated">Last updated: July 12, 2026</p>
+    </div>
+
+    <div class="legal-body">
+      <h2>1. Acceptance of terms</h2>
+      <p>By inviting Maya to a Discord server, using its commands, or logging into the dashboard, you agree to these Terms of Service. If you don't agree, please don't use Maya.</p>
+
+      <h2>2. Description of service</h2>
+      <p>Maya is a Discord bot that plays audio in voice channels and provides related utility commands, along with a web dashboard for controlling playback and server settings. Maya is provided free of charge, with no paywalled features.</p>
+
+      <h2>3. Acceptable use</h2>
+      <p>You agree not to use Maya to:</p>
+      <ul>
+        <li>Violate Discord's <a href="https://discord.com/terms" target="_blank" rel="noopener">Terms of Service</a> or <a href="https://discord.com/guidelines" target="_blank" rel="noopener">Community Guidelines</a></li>
+        <li>Play or queue content that infringes on someone else's intellectual property rights</li>
+        <li>Attempt to abuse, overload, or interfere with Maya's normal operation</li>
+        <li>Attempt to bypass permission checks or gain unauthorized control over playback in servers you don't have access to</li>
+      </ul>
+
+      <h2>4. Dashboard access</h2>
+      <p>The dashboard uses Discord OAuth2 login. Your permission level in a server (owner, manager, or member) determines what dashboard controls are available to you, mirroring the same expectations as using commands directly in Discord.</p>
+
+      <h2>5. Third-party content</h2>
+      <p>Maya streams audio from third-party sources (such as YouTube and other providers). Maya does not host this content and is not responsible for its availability, accuracy, or removal.</p>
+
+      <h2>6. Availability</h2>
+      <p>Maya is provided on an "as is" and "as available" basis. We don't guarantee uninterrupted uptime, and features may change, be added, or be removed at any time.</p>
+
+      <h2>7. Termination</h2>
+      <p>We reserve the right to remove Maya from any server, or restrict access to the dashboard, if these terms are violated.</p>
+
+      <h2>8. Limitation of liability</h2>
+      <p>To the fullest extent permitted by law, Maya and its operators are not liable for any indirect, incidental, or consequential damages arising from your use of the bot or dashboard.</p>
+
+      <h2>9. Changes to these terms</h2>
+      <p>We may update these Terms of Service from time to time. Continued use of Maya after changes are posted means you accept the updated terms.</p>
+
+      <h2>10. Contact</h2>
+      <p>Questions about these terms? Reach out through the <a href="/#commands">support server</a> (run <code>support</code> in any server with Maya).</p>
+    </div>
+
+    <div class="legal-footer-nav">
+      <a href="/">Home</a>
+      <a href="/docs">Docs</a>
+      <a href="/commands">All Commands</a>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</body>
+</html>

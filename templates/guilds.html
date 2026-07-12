@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — Maya{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="/static/css/dashboard.css">{% endblock %}
+
+{% block content %}
+  <div class="hero">
+    <div class="hero-greeting">
+      <div class="eyebrow" id="greeting-eyebrow">Good afternoon</div>
+      <h1>{{ session.username }}</h1>
+      <p>Here's what's been playing in your world.</p>
+    </div>
+    <div class="hero-actions">
+      <span class="btn btn-ghost" style="cursor:default;">✦ Free Plan</span>
+      <a class="btn btn-primary" id="add-to-server-btn"
+         href="{{ invite_url|default('https://discord.com/oauth2/authorize?client_id=1428345205899132978&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fapi%2Fcallback&integration_type=0&scope=bot') }}"
+         data-invite-url="{{ invite_url|default('https://discord.com/oauth2/authorize?client_id=1428345205899132978&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fapi%2Fcallback&integration_type=0&scope=bot') }}">+ Add to Server</a>
+    </div>
+  </div>
+
+  <section class="row-section">
+    <div class="section-head">
+      <div class="eyebrow">Connected</div>
+      <h2>Your servers</h2>
+    </div>
+    <div class="hscroll" id="servers-row">
+      <div class="tile"><div class="tile-art skel" style="width:84px;height:84px;"></div></div>
+      <div class="tile"><div class="tile-art skel" style="width:84px;height:84px;"></div></div>
+      <div class="tile"><div class="tile-art skel" style="width:84px;height:84px;"></div></div>
+    </div>
+  </section>
+
+  <section class="row-section">
+    <div class="section-head">
+      <div class="eyebrow">History</div>
+      <h2>Recently played</h2>
+    </div>
+    <div class="hscroll" id="recent-row"></div>
+  </section>
+
+  <section class="row-section">
+    <div class="section-head">
+      <div class="eyebrow">Collection</div>
+      <h2>Your library</h2>
+      <div class="library-tabs">
+        <div class="library-tab active" data-tab="playlists">Playlists</div>
+        <div class="library-tab" data-tab="favourites">Favourites</div>
+      </div>
+    </div>
+    <div class="library-body" id="library-body"></div>
+    <div style="display:flex; justify-content:center; margin-top:6px;">
+      <button class="btn btn-primary" id="create-playlist-btn">+ Create playlist</button>
+    </div>
+  </section>
+
+  <div class="chart-cols">
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">🔥 Trending now</div>
+      </div>
+      <div class="card" style="padding: 8px 16px;">
+        <div class="chart-list" id="trending-list"></div>
+      </div>
+    </section>
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">🎧 Your most played</div>
+      </div>
+      <div class="card" style="padding: 8px 16px;">
+        <div class="chart-list" id="most-played-list"></div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="/static/js/guilds.js"></script>
+  <script>document.getElementById('greeting-eyebrow').textContent = timeOfDayGreeting();</script>
+{% endblock %}
