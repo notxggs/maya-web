@@ -14,7 +14,7 @@ from fastapi.responses import RedirectResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from dashboard import oauth
+import oauth
 
 BASE_DIR = Path(__file__).parent
 # Railway/Render/Fly inject the public port via $PORT — fall back to
